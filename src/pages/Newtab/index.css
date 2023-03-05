@@ -1,3 +1,7 @@
+html {
+  --titleTop: 1000px;
+
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +14,40 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#title {
+  position: relative;
+  font-size: 100px;
+  font-weight: bold;
+  background: #fff;
+  color: #000;
+  overflow: hidden;
+}
+#title::before,
+#title::after {
+  content: "";
+  position: absolute;
+  top: var(--titleTop);
+  left: 50%;
+  width: 2000px;
+  height: 2000px;
+  border-radius: 45% 48% 43% 47%;
+  transform: translate(-50%, -50%);
+  background: rgba(3, 169, 244, 0.85);
+  animation: rotate 10s infinite linear;
+  z-index: 1;
+   mix-blend-mode: lighten;
+}
+#title::after {
+  border-radius: 43% 47% 44% 48%;
+  animation: rotate 10s infinite 0.5s linear;
+}
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }

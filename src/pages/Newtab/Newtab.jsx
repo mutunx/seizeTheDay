@@ -1,27 +1,27 @@
 import React from 'react';
-import logo from '../../assets/img/logo.svg';
 import './Newtab.css';
 import './Newtab.scss';
+import Header from "./Header";
+import StepCollection from "./StepCollection";
+import StepManager from "./StepManager";
+import {Divider, Flex, HStack} from "@chakra-ui/react";
+import MostViewedPages from "./MostViewedPages";
+import Footer from "./Footer";
 
 const Newtab = () => {
+    const [updateSign, setUpdateSign] = React.useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/pages/Newtab/Newtab.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React!
-        </a>
-        <h6>The color of this paragraph is defined using SASS.</h6>
-      </header>
-    </div>
+    <Flex flexDirection={'column'} h={'100vh'} justifyContent={'space-around'} alignItems={'center'}>
+        <Header />
+        <StepCollection setUpdateSign={setUpdateSign}/>
+        <HStack divider={<Divider orientation='vertical' variant="thick" />} minW={'100%'} justifyContent={'center'} spacing={'24px'}>
+            <StepManager
+                updateSign={updateSign}
+            />
+            <MostViewedPages />
+        </HStack>
+        <Footer />
+    </Flex>
   );
 };
 
